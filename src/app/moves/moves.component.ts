@@ -17,20 +17,14 @@ export class MovesComponent implements OnInit, AfterViewInit {
 
   constructor(private movesService: MovesService,
               private cdRef: ChangeDetectorRef) { 
-                // this.mdbTable.setDataSource([]);
               }
 
   ngOnInit(): void {
     this.movesService.getMovesList().then(resMoves => {
       this.moves = resMoves['moves'];
-      // for (let i = 1; i <= 15; i++) {
-      //   this.elements.push({id: i.toString(), first: 'User ' + i, last: 'Name ' + i, handle: 'Handle ' + i});
-      // }
-  
       this.mdbTable.setDataSource(this.moves);
       this.elements = this.mdbTable.getDataSource();
       this.previous = this.mdbTable.getDataSource();
-      console.log(this.moves);
     });
   }
 
