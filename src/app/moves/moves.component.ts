@@ -5,13 +5,12 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-moves',
-  templateUrl: './moves.component.html',
-  styleUrls: ['./moves.component.css']
+  templateUrl: './moves.component.html'
 })
 export class MovesComponent implements OnInit, AfterViewInit {
-  moves: any;
   @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination!: MdbTablePaginationComponent;
   @ViewChild(MdbTableDirective, { static: false }) mdbTable!: MdbTableDirective;
+  moves: any;
   elements: any = [];
   previous: any = [];
   headElements = ['ID', 'Name', 'Url'];
@@ -31,7 +30,6 @@ export class MovesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.mdbTablePagination.setMaxVisibleItemsNumberTo(10);
-
     this.mdbTablePagination.calculateFirstItemIndex();
     this.mdbTablePagination.calculateLastItemIndex();
     this.cdRef.detectChanges();
@@ -42,6 +40,11 @@ export class MovesComponent implements OnInit, AfterViewInit {
     const move_id = arr_url[arr_url.length - 2];
     this.router.navigate(['/', 'move-details', move_id],
      {queryParams: {index: index}});
+  }
+
+  isShow(index: number): boolean {
+    return index+1 >= this.mdbTablePagination.firstItemIndex &&
+     index < this.mdbTablePagination.lastItemIndex;
   }
 
 }

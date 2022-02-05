@@ -9,9 +9,9 @@
           </thead>
           <tbody>
           <tr *ngFor="let el of elements; let i = index" class="pointer" (click)="openMoveDetails(el.move.url, i + 1)" >
-            <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row" >{{i + 1}}</th>
-            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.move.name}}</td>
-            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.move.url}}</td>
+            <th *ngIf="isShow(i)" scope="row" >{{i + 1}}</th>
+            <td *ngIf="isShow(i)">{{el.move.name}}</td>
+            <td *ngIf="isShow(i)">{{el.move.url}}</td>
           </tr>
           </tbody>
           <tfoot class="grey lighten-5 w-100">
