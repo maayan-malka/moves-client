@@ -6,8 +6,7 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-move-details',
-  templateUrl: './move-details.component.html',
-  styleUrls: ['./move-details.component.css']
+  templateUrl: './move-details.component.html'
 })
 export class MoveDetailsComponent implements OnInit, OnDestroy {
   routeSub = new Subscription;
