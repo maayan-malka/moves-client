@@ -1,0 +1,10 @@
+<span class="pointer float-right mr-3 mt-3" (click)="back()">back></span>
+<div class="text-center pt-5">
+    <h4 class="mb-3"> Page Move number {{move_index}}</h4>
+    <div *ngIf="!move">loading...</div>
+    <div *ngIf="move">
+        <p>id: {{move.id}}</p>
+        <p>accuracy: {{move.accuracy}}</p>
+        <p>power: {{move.power}}</p>
+    </div>
+</div>
