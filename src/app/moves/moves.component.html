@@ -8,8 +8,8 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let el of elements; let i = index">
-            <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row">{{i + 1}}</th>
+          <tr *ngFor="let el of elements; let i = index" class="pointer" (click)="openMoveDetails(el.move.url, i + 1)" >
+            <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row" >{{i + 1}}</th>
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.move.name}}</td>
             <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.move.url}}</td>
           </tr>
@@ -24,3 +24,4 @@
         </table>
       </div>
 </div>
+<router-outlet></router-outlet>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MovesService } from 'src/services/moves.service';
 import { MdbTablePaginationComponent, MdbTableDirective } from 'angular-bootstrap-md';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-moves',
@@ -16,8 +17,8 @@ export class MovesComponent implements OnInit, AfterViewInit {
   headElements = ['ID', 'Name', 'Url'];
 
   constructor(private movesService: MovesService,
-              private cdRef: ChangeDetectorRef) { 
-              }
+              private cdRef: ChangeDetectorRef,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.movesService.getMovesList().then(resMoves => {
@@ -34,6 +35,13 @@ export class MovesComponent implements OnInit, AfterViewInit {
     this.mdbTablePagination.calculateFirstItemIndex();
     this.mdbTablePagination.calculateLastItemIndex();
     this.cdRef.detectChanges();
+  }
+
+  openMoveDetails(url: string, index: number) {
+    const arr_url = url.split('/');
+    const move_id = arr_url[arr_url.length - 2];
+    this.router.navigate(['/', 'move-details', move_id],
+     {queryParams: {index: index}});
   }
 
 }
